@@ -1,39 +1,39 @@
-// This is a test harness for your module
-// You should do something interesting in this harness 
-// to test out the module and to provide instructions 
-// to users on how to use it by example.
-
-
-// open a single window
 var win = Ti.UI.createWindow({
+  layout: 'vertical',
 	backgroundColor:'white'
 });
-var label = Ti.UI.createLabel();
-win.add(label);
 win.open();
 
-// TODO: write your module tests here
-var ticustompasteboard = require('jp.hsj.ticustompasteboard');
-Ti.API.info("module is => " + ticustompasteboard);
+var TiCustomPasteboard = require('jp.hsj.ticustompasteboard');
+Ti.API.info("module is => " + TiCustomPasteboard);
+var pb = 'yay.my.pb';
 
-label.text = ticustompasteboard.example();
-
-Ti.API.info("module exampleProp is => " + ticustompasteboard.exampleProp);
-ticustompasteboard.exampleProp = "This is a test value";
-
-if (Ti.Platform.name == "android") {
-	var proxy = ticustompasteboard.createExample({
-		message: "Creating an example Proxy",
-		backgroundColor: "red",
-		width: 100,
-		height: 100,
-		top: 100,
-		left: 150
-	});
-
-	proxy.printMessage("Hello world!");
-	proxy.message = "Hi world!.  It's me again.";
-	proxy.printMessage("Hello world!");
-	win.add(proxy);
+if (Ti.Platform.name != "android") {
+  var button = Ti.UI.createButton({
+    top: 50,
+    title: 'open photo gallery',
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE
+  });
+  win.add(button);
+  var imageButton = Ti.UI.createButton({
+    top: 50,
+    title: 'get image',
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE
+  });
+  win.add(imageButton);
+  button.addEventListener('click', function(){
+    Ti.Media.openPhotoGallery({
+      success: function(e){
+        TiCustomPasteboard.createPasteboard(pb);
+        TiCustomPasteboard.setImage(pb, e.media);
+      }
+    });
+  });
+  imageButton.addEventListener('click', function(){
+    var blob = TiCustomPasteboard.getImage(pb);
+    win.add(Ti.UI.createImageView({image: blob, top: 20}));
+  });
 }
 

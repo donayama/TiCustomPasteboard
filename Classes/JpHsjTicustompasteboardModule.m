@@ -84,8 +84,6 @@
 	}
 }
 
-#pragma Public APIs
-
 
 -(void)createPasteboard:(id)args
 {
@@ -131,6 +129,28 @@
     // main
     UIPasteboard* pb = [UIPasteboard pasteboardWithName:pasteboardName create:NO];
     return pb.string;
+}
+
+-(void)setImage:(id)args
+{
+    // arg parse
+    id arg = [args objectAtIndex:0];
+    UIImage *image = [TiUtils image:[args objectAtIndex:1] proxy:self];
+	NSString *pasteboardName = [TiUtils stringValue:arg];
+    
+    UIPasteboard* pb = [UIPasteboard pasteboardWithName:pasteboardName create:YES];
+    pb.persistent = YES;
+    [pb setImage: image];
+}
+
+-(id)getImage:(id)args
+{
+    // arg parse
+    id arg0 = [args objectAtIndex:0];
+    NSString *pasteboardName = [TiUtils stringValue:arg0];
+    // main
+    UIPasteboard* pb = [UIPasteboard pasteboardWithName:pasteboardName create:NO];
+    return [[[TiBlob alloc] initWithImage:pb.image] autorelease];
 }
 
 

@@ -2,17 +2,17 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 0.1
+version: 0.2
 apiversion: 2
 description: Simple Custom Pasteboard access Module for iOS
-author: donayama
+author: donayama, Toshiro Yagi
 license: Apache Public License 2
-copyright: Copyright © 2012 donayama(KITAO Masato)
+copyright: Copyright © 2012 donayama(KITAO Masato), 2031 donayama(KITAO Masato), Toshiro Yagi
 
 
 # these should not be edited
-name: ticustompasteboard
+name: TiCustomPasteboard
 moduleid: jp.hsj.ticustompasteboard
 guid: 52ec55ce-d0b7-4cd3-84ff-05d3b96cb0ff
 platform: iphone
-minsdk: 2.0.1.GA
+minsdk: 3.1.0.GA

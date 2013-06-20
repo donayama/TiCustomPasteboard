@@ -1,16 +1,16 @@
-# ticustompasteboard Module
+# TiCustomPasteboard Module
 
 ## Description
 
 TODO: Enter your module description here
 
-## Accessing the ticustompasteboard Module
+## Accessing the TiCustomPasteboard Module
 
 To access this module from JavaScript, you would do the following:
 
-	var ticustompasteboard = require("jp.hsj.ticustompasteboard");
+	var TiCustomPasteboard = require("jp.hsj.ticustompasteboard");
 
-The ticustompasteboard variable is a reference to the Module object.	
+The TiCustomPasteboard variable is a reference to the Module object.	
 
 ## Reference
 

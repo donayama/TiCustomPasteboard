@@ -2,12 +2,12 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 0.2
+version: 0.3
 apiversion: 2
 description: Simple Custom Pasteboard access Module for iOS
-author: donayama, Toshiro Yagi
+author: donayama, Toshiro Yagi, Keigo AOKI
 license: Apache Public License 2
-copyright: Copyright © 2012 donayama(KITAO Masato), 2031 donayama(KITAO Masato), Toshiro Yagi
+copyright: Copyright © 2012-2014 donayama(KITAO Masato), Toshiro Yagi, Keigo AOKI
 
 
 # these should not be edited

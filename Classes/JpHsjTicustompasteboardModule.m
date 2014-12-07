@@ -153,5 +153,46 @@
     return [[[TiBlob alloc] initWithImage:pb.image] autorelease];
 }
 
+-(NSString *)getGeneralPasteboardName:(id)args
+{
+    return [UIPasteboard generalPasteboard].name;
+}
+
+-(void)setGeneralString:(id)args
+{
+    // arg parse
+    id arg = [args objectAtIndex:0];
+    NSString *text = [TiUtils stringValue:arg];
+
+    // main
+    UIPasteboard *pb = [UIPasteboard generalPasteboard];
+    [pb setValue:text forPasteboardType:@"public.text"];
+}
+
+-(NSString *)getGeneralString:(id)args
+{
+    // main
+    UIPasteboard *pb = [UIPasteboard generalPasteboard];
+    return [pb valueForPasteboardType:@"public.text"];
+}
+
+-(void)setGeneralImage:(id)args
+{
+    // arg parse
+    //UIImage *image = [TiUtils image:[args objectAtIndex:0] proxy:self];
+    UIImage *image = [TiUtils image:args proxy:self];
+
+    // main
+    UIPasteboard *pb = [UIPasteboard generalPasteboard];
+    [pb setData:UIImagePNGRepresentation(image) forPasteboardType:@"public.png"];
+}
+
+-(id)getGeneralImage:(id)args
+{
+    // main
+    UIPasteboard *pb = [UIPasteboard generalPasteboard];
+    UIImage *image = [UIImage imageWithData:[pb dataForPasteboardType:@"public.png"]];
+    return [[[TiBlob alloc] initWithImage:image] autorelease];
+}
 
 @end
